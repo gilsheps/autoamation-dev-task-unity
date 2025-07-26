@@ -18,10 +18,10 @@ pom.xml                  # Maven build file
 
 Make sure you have the following installed on your machine:
 
-* **Java 17 or above**
-* **Maven 3.8+**
+* **Java 11 or above**
+* **Maven 3.9+**
 * **Git**
-* (Optional) **ChromeDriver** (for UI tests)
+* **ChromeDriver** (for UI tests)
 
 ---
 
@@ -98,7 +98,7 @@ You can view results in `ExtentReports.html` file.
 
 * **Ensure ChromeDriver is compatible with your Chrome version.**
 * **Use `mvn clean` before re-running tests to avoid stale build issues.**
-* **For failed tests, check `target/surefire-reports` for details.**
+* **For failed tests, check `TestReport/ExtentReports.htm` for details.**
 
 ---
 

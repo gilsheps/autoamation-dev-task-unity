@@ -50,7 +50,6 @@ public class TestRestScenarios extends BaseRestTestClass {
                 .then().statusCode(200);
     }
 
-    //    @Test
     @Test(dependsOnMethods = {"testEditPost"})
     public void testPostChange() {
         given().cookies(cookie).pathParam("id", postId).get("admin/api/resources/Post/records/{id}/show").then()
