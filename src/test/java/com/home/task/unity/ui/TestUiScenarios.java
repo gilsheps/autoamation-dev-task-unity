@@ -1,4 +1,4 @@
-package com.home.task.unity;
+package com.home.task.unity.ui;
 
 import com.home.task.unity.base.BaseWebTestClass;
 import com.home.task.unity.utils.Enums;

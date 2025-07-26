@@ -1,4 +1,4 @@
-package com.home.task.unity;
+package com.home.task.unity.rest;
 
 import com.home.task.unity.base.BaseRestTestClass;
 import com.home.task.unity.utils.Enums;
