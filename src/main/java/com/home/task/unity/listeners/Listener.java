@@ -11,6 +11,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.home.task.unity.base.BaseWebTestClass;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
@@ -22,8 +23,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.home.task.unity.utils.PageObjectUtils.printToLog;
-import static com.home.task.unity.utils.PageObjectUtils.setContext;
 
 public class Listener implements ITestListener {
 
@@ -97,7 +96,6 @@ public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
         suiteName = context.getSuite().getName();
-        setContext(context);
         printToLog("onStart() " + context.getName() + "suiteName ==> " + suiteName);
     }
 
@@ -118,5 +116,10 @@ public class Listener implements ITestListener {
                     printToLog(result.getName().toUpperCase());
                 });
         extent.flush();
+    }
+
+    protected void printToLog(String str) {
+        String className = new Exception().getStackTrace()[1].getClassName();
+        LogFactory.getLog(Listener.class.getName()).info(className.substring(className.lastIndexOf(".") + 1) + " " + str);
     }
 }

@@ -10,10 +10,8 @@ import org.apache.tika.utils.ExceptionUtils;
 import org.testng.IHookCallBack;
 import org.testng.IHookable;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
-
-import static com.home.task.unity.utils.PageObjectUtils.printToLog;
-
 
 public class SoftAssertLocal implements IHookable {
 
@@ -38,8 +36,7 @@ public class SoftAssertLocal implements IHookable {
     }
 
     public static SoftAssert getSoftAssert() {
-        return new SoftAssert();
-//        return getSoftAssert(Reporter.getCurrentTestResult());
+        return getSoftAssert(Reporter.getCurrentTestResult());
     }
 
     private static SoftAssert getSoftAssert(ITestResult result) {
@@ -51,15 +48,9 @@ public class SoftAssertLocal implements IHookable {
     }
 
     public static void softAssertTrue(String message, boolean booleanToAssert) {
-        printToLog("softAssertTrue(), message: " + message + " booleanToAssert " + booleanToAssert);
         String className = new Exception().getStackTrace()[1].getClassName();
         String methodName = new Exception().getStackTrace()[1].getMethodName();
         getSoftAssert().assertTrue(booleanToAssert, className.substring(className.lastIndexOf(".") + 1) + " - " + methodName + " " + message);
     }
 
-    public static void softAssertFalse(String message, boolean booleanToAssert) {
-        printToLog("assertFalse(), message: " + message + " booleanToAssert " + booleanToAssert);
-        String className = new Exception().getStackTrace()[1].getClassName();
-        getSoftAssert().assertFalse(booleanToAssert, className.substring(className.lastIndexOf(".") + 1) + " " + message);
-    }
 }

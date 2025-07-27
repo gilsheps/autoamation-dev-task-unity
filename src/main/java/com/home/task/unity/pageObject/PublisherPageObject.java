@@ -4,7 +4,6 @@ import com.home.task.unity.base.BaseWebTestClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.home.task.unity.utils.PageObjectUtils.*;
 
 public class PublisherPageObject extends BaseWebTestClass {
     @FindBy(css = "button[href='/admin/resources/Publisher/actions/new']")

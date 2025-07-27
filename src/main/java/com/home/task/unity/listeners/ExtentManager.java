@@ -14,8 +14,6 @@ import org.openqa.selenium.Platform;
 
 import java.io.File;
 
-import static com.home.task.unity.utils.PageObjectUtils.printToLog;
-
 
 public class ExtentManager {
 
@@ -53,28 +51,23 @@ public class ExtentManager {
         return extent;
     }
 
-    //Select the extent report file location based on platform
     private static String getReportFileLocation(Platform platform) {
         String reportFileLocation = null;
         switch (platform) {
             case MAC:
                 reportFileLocation = macReportFileLoc;
                 createReportPath(macPath);
-                printToLog("ExtentReport Path for MAC: " + macPath + "\n");
                 break;
             case WINDOWS:
                 reportFileLocation = winReportFileLoc;
                 createReportPath(windowsPath);
-                printToLog("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
                 break;
             default:
-                printToLog("ExtentReport path has not been set! There is a problem!\n");
                 break;
         }
         return reportFileLocation;
     }
 
-    //Create the report path if it does not exist
     private static void createReportPath(String path) {
         File testDirectory = new File(path);
         if (!testDirectory.exists()) {
@@ -88,7 +81,6 @@ public class ExtentManager {
         }
     }
 
-    //Get current platform
     private static Platform getCurrentPlatform() {
         if (platform == null) {
             String operSys = System.getProperty("os.name").toLowerCase();

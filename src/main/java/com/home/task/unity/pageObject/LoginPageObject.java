@@ -4,7 +4,6 @@ import com.home.task.unity.base.BaseWebTestClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.home.task.unity.utils.PageObjectUtils.verifyWebElementText;
 
 public class LoginPageObject extends BaseWebTestClass {
 
@@ -17,11 +16,8 @@ public class LoginPageObject extends BaseWebTestClass {
 
 
     public void loginAdmin() {
-//        File screenshotFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
-
         verifyWebElementText(emailInputField, "admin@example.com");
         verifyWebElementText(passwordInputField, "password");
         loginButton.click();
-//        mainPageObject().verifyLogin();
     }
 }

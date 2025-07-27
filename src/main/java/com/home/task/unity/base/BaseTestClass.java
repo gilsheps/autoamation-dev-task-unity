@@ -1,8 +1,8 @@
 package com.home.task.unity.base;
 
 import com.home.task.unity.listeners.Listener;
-import com.home.task.unity.utils.PageObjectUtils;
 import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -10,6 +10,8 @@ import org.testng.annotations.Listeners;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+import static com.home.task.unity.utils.SoftAssertLocal.softAssertTrue;
 
 
 /**
@@ -42,7 +44,17 @@ public abstract class BaseTestClass {
 
     protected void printToLog(String str) {
         String className = new Exception().getStackTrace()[1].getClassName();
-        LogFactory.getLog(PageObjectUtils.class.getName()).info(className.substring(className.lastIndexOf(".") + 1) + " " + str);
+        LogFactory.getLog(BaseTestClass.class.getName()).info(className.substring(className.lastIndexOf(".") + 1) + " " + str);
+    }
+
+    protected void verifyWebElementText(WebElement webElement, String strToCompare, String strToAssert) {
+        printToLog("verifyWebElementText");
+        softAssertTrue(strToCompare + " " + strToAssert, getTextFromWebElementWithOutLowerCase(webElement).equals(strToCompare));
+    }
+
+    protected String getTextFromWebElementWithOutLowerCase(WebElement webElement) {
+        printToLog("getTextFromWebElement() for: " + webElement);
+        return webElement.getText();
     }
 
 }

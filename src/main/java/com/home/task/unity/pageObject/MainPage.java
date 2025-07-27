@@ -1,16 +1,12 @@
 package com.home.task.unity.pageObject;
 
 import com.home.task.unity.base.BaseWebTestClass;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static com.home.task.unity.utils.PageObjectUtils.getTextFromWebElementWithOutLowerCase;
-import static com.home.task.unity.utils.PageObjectUtils.verifyWebElementText;
 import static com.home.task.unity.utils.SoftAssertLocal.softAssertTrue;
 
 public class MainPage extends BaseWebTestClass {
